@@ -13,6 +13,8 @@ public class FetchingData {
         Connection con = null;
         Statement stmt = null;
         ResultSet result = null;
+        int id, salary;
+        String name, department;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // 1. Load the driver
@@ -25,9 +27,11 @@ public class FetchingData {
 
             // 5. Process the query
             while (result.next()) {
-                System.out.println(
-                        result.getInt(1) + "     " + result.getString(2) + "     " + result.getString(3) + "     "
-                                + result.getInt(4));
+                id = result.getInt(1);
+                name = result.getString(2);
+                department = result.getString(3);
+                salary = result.getInt(4);
+                System.out.printf("%d  %-9s  %-10s  %d \n", id, name, department, salary);
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
