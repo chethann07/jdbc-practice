@@ -41,21 +41,7 @@ public class FetchingSpecificData2 {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (result != null) {
-                    result.close();
-                }
-
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            MyConnect.close(result, pstmt, con);
         }
 
         scan.close();
